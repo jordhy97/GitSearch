@@ -59,8 +59,15 @@ public class User {
    * pengguna Github ini.
    */
   public void loadRepositories() throws IOException {
-    HttpUrlConnector connector = new HttpUrlConnector(reposUrl, 5000);
-    repositories = Repository.parseJson(connector.getContent());
+    int page = 1;
+    HttpUrlConnector connector = new HttpUrlConnector(reposUrl + "?page=" + page, 5000);
+    ArrayList<Repository> results = Repository.parseJson(connector.getContent());
+    while(!results.isEmpty()) {
+      repositories.addAll(results);
+      page++;
+      connector = new HttpUrlConnector(reposUrl + "?page=" + page, 5000);
+      results = Repository.parseJson(connector.getContent());
+    }
   }
 
   /**
