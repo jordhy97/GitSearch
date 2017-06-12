@@ -297,10 +297,10 @@ public class SearchPanel extends JPanel {
             limit = ">" + filtersLowerLimitSpinner[i].getValue();
             break;
           case "minimum":
-            limit = "<=" + filtersLowerLimitSpinner[i].getValue();
+            limit = ">=" + filtersLowerLimitSpinner[i].getValue();
             break;
           case "maximum":
-            limit = ">=" + filtersLowerLimitSpinner[i].getValue();
+            limit = "<=" + filtersLowerLimitSpinner[i].getValue();
             break;
           case "equals":
             limit = filtersLowerLimitSpinner[i].getValue().toString();
