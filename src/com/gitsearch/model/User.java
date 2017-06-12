@@ -56,6 +56,13 @@ public class User {
   }
 
   /**
+   * Memeriksa apakah repository pengguna Github ini telah dimuat atau belum.
+   * @return true jika repository telah dimuat dan false jika tidak.
+   */
+  public boolean isRepositoriesLoaded() {
+    return repositoriesLoaded;
+  }
+  /**
    * Memuat semua repository yang dimiliki oleh pengguna Github ini dari URL repository.
    * @throws IOException jika terjadi kesalahan I/O ketika melakukan
    koneksi ke URL repository pengguna Github ini.
