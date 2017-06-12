@@ -33,7 +33,7 @@ import javax.swing.ListSelectionModel;
  *
  * @author Jordhy Fernando
  */
-public class SearchResultsPanel extends JPanel{
+public class SearchResultsPanel extends JPanel {
 
   private SearchResponse model;
   private SearchQuery query;
@@ -88,7 +88,7 @@ public class SearchResultsPanel extends JPanel{
 
   /**
    * Mengatur model hasil pencarian untuk panel hasil pencarian ini.
-   * @param model hasil pencarian yang digunakan sebagai model (yang akan ditampilkan)
+   * @param model hasil pencarian yang digunakan sebagai model (yang akan ditampilkan).
    */
   public void setModel(SearchResponse model) {
     this.model = model;
@@ -96,7 +96,7 @@ public class SearchResultsPanel extends JPanel{
 
   /**
    * Mengatur query pencarian yang digunakan untuk mendapatkan hasil pencarian
-   * pada panel pencarian ini.
+   * pada panel hasil pencarian ini.
    * @param query query pencarian yang digunakan.
    */
   public void setQuery(SearchQuery query) {
@@ -109,8 +109,7 @@ public class SearchResultsPanel extends JPanel{
   public void update() {
     if (model.getTotalCount() <= 1) {
       totalCountLabel.setText("Found " + model.getTotalCount() + " user");
-    }
-    else {
+    } else {
       totalCountLabel.setText("Found " + model.getTotalCount() + " users");
     }
     usernameListModel.clear();
@@ -119,14 +118,12 @@ public class SearchResultsPanel extends JPanel{
     }
     if (query.getCurrentPage() == 1) {
       previousButton.setEnabled(false);
-    }
-    else {
+    } else {
       previousButton.setEnabled(true);
     }
     if (query.getCurrentPage() * SearchQuery.getResultPerPageLimit() < model.getTotalCount()) {
       nextButton.setEnabled(true);
-    }
-    else {
+    } else {
       nextButton.setEnabled(false);
     }
   }

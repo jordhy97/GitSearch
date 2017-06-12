@@ -65,7 +65,7 @@ public class Repository {
   /**
    * Mem-<i>parse</i> dan mengembalikan daftar repository yang diberikan dalam format JSON.
    *
-   * Prekondisi: format JSON sesuai dengan format yang diberikan Github API.
+   * <p>Prekondisi: format JSON sesuai dengan format yang diberikan Github API.
    * @param rawJson JSON yang ingin di-<i>parse</i>.
    * @return daftar repository hasil <i>parsing</i> rawJson.
    */
@@ -93,8 +93,7 @@ public class Repository {
     htmlText += "<b>" + name + "</b><br>";
     if (description == null) {
       htmlText += "<i>-</i><br>";
-    }
-    else {
+    } else {
       htmlText += "<i>" + description + "</i><br>";
     }
     htmlText += "URL: <a href=\"" + url + "\" target=\"_blank\">" + url

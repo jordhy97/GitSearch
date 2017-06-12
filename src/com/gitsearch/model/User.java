@@ -57,8 +57,8 @@ public class User {
 
   /**
    * Memuat semua repository yang dimiliki oleh pengguna Github ini dari URL repository.
-   * @throws IOException jika terjadi kesalahan I/O ketika melakukan koneksi ke URL repository
-   * pengguna Github ini.
+   * @throws IOException jika terjadi kesalahan I/O ketika melakukan
+   koneksi ke URL repository pengguna Github ini.
    */
   public void loadRepositories() throws IOException {
     if (!repositoriesLoaded) {
@@ -67,7 +67,7 @@ public class User {
         HttpUrlConnector connector = new HttpUrlConnector(reposUrl
             + "?access_token=8d587e6ae4f620395cc0bf2711dc56bd433ead7b&page=" + page, 5000);
         ArrayList<Repository> results = Repository.parseJson(connector.getContent());
-        while(!results.isEmpty()) {
+        while (!results.isEmpty()) {
           repositories.addAll(results);
           page++;
           connector = new HttpUrlConnector(reposUrl
@@ -75,8 +75,7 @@ public class User {
           results = Repository.parseJson(connector.getContent());
         }
         repositoriesLoaded = true;
-      }
-      catch (IOException e) {
+      } catch (IOException e) {
         repositoriesLoaded = false;
         repositories = new ArrayList<>();
         throw new IOException("Failed to load repositories, please check your internet connection");
@@ -87,7 +86,7 @@ public class User {
   /**
    * Mem-<i>parse</i> dan mengembalikan daftar pengguna Github yang diberikan dalam format JSON.
    *
-   * Prekondisi: format JSON sesuai dengan format yang diberikan Github Search API untuk
+   * <p>Prekondisi: format JSON sesuai dengan format yang diberikan Github Search API untuk
    * nilai "items".
    * @param rawJson JSON yang ingin di-<i>parse</i>.
    * @return daftar pengguna Github hasil <i>parsing</i> rawJson.

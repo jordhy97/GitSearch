@@ -37,7 +37,7 @@ import javax.swing.SwingConstants;
  *
  * @author Jordhy Fernando
  */
-public class SearchPanel extends JPanel{
+public class SearchPanel extends JPanel {
 
   private JLabel logoLabel;
   private JTextField queryTextField;
@@ -114,7 +114,7 @@ public class SearchPanel extends JPanel{
    */
   private void createUIComponents() {
     logoLabel = new JLabel();
-    ImageIcon logo = new ImageIcon("assets/logo.png");
+    ImageIcon logo = new ImageIcon(getClass().getResource("/images/logo.png"));
     logoLabel.setIcon(logo);
     logoLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     logoLabel.setVisible(false);
@@ -158,8 +158,7 @@ public class SearchPanel extends JPanel{
     for (int i = 0; i < filtersCheckBox.length; i++) {
       if (i == 0) {
         filtersCheckBox[i] = new JCheckBox("Repositories");
-      }
-      else if (i == 1) {
+      } else if (i == 1) {
         filtersCheckBox[i] = new JCheckBox("Followers");
       }
       filtersCheckBox[i].setOpaque(false);
@@ -206,8 +205,7 @@ public class SearchPanel extends JPanel{
     if (filtersOptionsComboBox[index].getSelectedItem().equals("between")) {
       filtersAndLabel[index].setEnabled(true);
       filtersUpperLimitSpinner[index].setEnabled(true);
-    }
-    else {
+    } else {
       filtersAndLabel[index].setEnabled(false);
       filtersUpperLimitSpinner[index].setEnabled(false);
     }
@@ -271,7 +269,7 @@ public class SearchPanel extends JPanel{
    * @return query pencarian berdasarkan nilai-nilai komponen panel pencarian.
    * @throws IOException  jika query pencarian yang dihasilkan tidak valid.
    */
-  public SearchQuery getSearchQuery() throws IOException{
+  public SearchQuery getSearchQuery() throws IOException {
     SearchQuery query =
         new SearchQuery(queryTextField.getText(), searchByGroup.getSelection().getActionCommand());
     if (query.getQuery().equals("")) {
@@ -286,9 +284,11 @@ public class SearchPanel extends JPanel{
           case "between":
             if ((Integer) filtersUpperLimitSpinner[i].getValue()
                 < (Integer)filtersLowerLimitSpinner[i].getValue()) {
-              throw new IOException("Lower bound of the filter cannot be greater than the upper bound");
+              throw new IOException("Lower bound of the filter "
+                  + "cannot be greater than the upper bound");
             }
-            limit = filtersLowerLimitSpinner[i].getValue() + ".." + filtersUpperLimitSpinner[i].getValue();
+            limit = filtersLowerLimitSpinner[i].getValue()
+                + ".." + filtersUpperLimitSpinner[i].getValue();
             break;
           case "less than":
             limit = "<" + filtersLowerLimitSpinner[i].getValue();

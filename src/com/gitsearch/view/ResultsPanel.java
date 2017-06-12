@@ -1,10 +1,10 @@
 package com.gitsearch.view;
 
+import com.gitsearch.controller.SearchResultsPanelController;
+import com.gitsearch.controller.UserPanelController;
 import com.gitsearch.model.SearchQuery;
 import com.gitsearch.model.SearchResponse;
 import com.gitsearch.model.User;
-import com.gitsearch.controller.SearchResultsPanelController;
-import com.gitsearch.controller.UserPanelController;
 import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.JPanel;

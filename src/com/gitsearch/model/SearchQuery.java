@@ -25,13 +25,12 @@ public class SearchQuery {
       "https://api.github.com/search/users?access_token=8d587e6ae4f620395cc0bf2711dc56bd433ead7b&q=";
 
   /**
-   * Menciptakan sebuah query pencarian dengan jenis tertentu.
+   * Menciptakan sebuah query pencarian dengan query dan jenis tertentu.
+   * @param query bagian query dari query pencarian.
    * @param type jenis query pencarian.
    */
   public SearchQuery(String query, String type) {
-    //changed
     this.query = query;
-   //changed
     this.type = type;
     currentPage = 1;
     filters = new ArrayList<>();

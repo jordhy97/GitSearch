@@ -1,4 +1,5 @@
 package com.gitsearch.model;
+
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
@@ -74,12 +75,10 @@ public class SearchResponse {
       result.users = User.parseJson(object.getJsonArray("items").toString());
       jsonReader.close();
       return result;
-    }
-    catch (IOException e) {
+    } catch (IOException e) {
       if (e.getMessage().equals("400")) {
         return new SearchResponse();
-      }
-      else {
+      } else {
         throw new IOException("Failed to load result, please check your internet connection");
       }
     }

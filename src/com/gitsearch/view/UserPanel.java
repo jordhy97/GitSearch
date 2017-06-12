@@ -104,8 +104,7 @@ public class UserPanel extends JPanel {
     if (model.getRepositories().size() <= 1) {
       usernameLabel.setText(model.getUsername()
           + " (Repository: " + (model.getRepositories().size()) + ")");
-    }
-    else {
+    } else {
       usernameLabel.setText(model.getUsername()
           + " (Repositories: " + (model.getRepositories().size()) + ")");
     }
@@ -119,14 +118,12 @@ public class UserPanel extends JPanel {
     }
     if (currentPage == 1) {
       previousButton.setEnabled(false);
-    }
-    else {
+    } else {
       previousButton.setEnabled(true);
     }
     if (currentPage * REPO_PER_PAGE < model.getRepositories().size()) {
       nextButton.setEnabled(true);
-    }
-    else {
+    } else {
       nextButton.setEnabled(false);
     }
   }

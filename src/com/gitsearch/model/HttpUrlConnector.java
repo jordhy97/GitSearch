@@ -27,7 +27,7 @@ public class HttpUrlConnector {
   /**
    * Menciptakan sebuah HttpUrlConnector dengan URL dan batas waktu koneksi yang ditentukan.
    *
-   * Prekondisi: timeout tidak bernilai negatif
+   * <p>Prekondisi: timeout tidak bernilai negatif
    * @param url URL yang akan disambungkan.
    * @param timeout batas waktu untuk melakukan koneksi ke url(dalam ms).
    */
@@ -60,11 +60,11 @@ public class HttpUrlConnector {
       in.close();
       con.disconnect();
       return content.toString();
-    }
-    catch (IOException e) {
+    } catch (IOException e) {
       if (con != null) {
         con.disconnect();
       }
+      e.printStackTrace();
       throw new IOException(((Integer) con.getResponseCode()).toString());
     }
   }

@@ -15,7 +15,7 @@ import com.gitsearch.view.MainView;
  * @author Jordhy Fernando
  */
 public class GitSearch {
-  public static void main(String[] args){
+  public static void main(String[] args) {
     MainView view = new MainView();
   }
 }

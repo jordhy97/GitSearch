@@ -56,8 +56,7 @@ public class SearchResultsPanelController {
       try {
         view.setModel(SearchResponse.getResponse(view.getQuery().generateUrl()));
         view.update();
-      }
-      catch(IOException exception){
+      } catch (IOException exception) {
         view.showErrorDialog(exception.getMessage());
       }
     }
@@ -77,8 +76,7 @@ public class SearchResultsPanelController {
       try {
         view.setModel(SearchResponse.getResponse(view.getQuery().generateUrl()));
         view.update();
-      }
-      catch(IOException exception){
+      } catch (IOException exception) {
         view.showErrorDialog(exception.getMessage());
       }
     }
@@ -152,8 +150,7 @@ public class SearchResultsPanelController {
   private void processesSelectedUser() {
     try {
       view.getSelectedUser().loadRepositories();
-    }
-    catch (IOException exception) {
+    } catch (IOException exception) {
       view.showErrorDialog(exception.getMessage());
     }
     resultsPanel.setUserModel(view.getSelectedUser());

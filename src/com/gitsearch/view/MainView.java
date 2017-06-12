@@ -2,9 +2,9 @@ package com.gitsearch.view;
 
 import static java.awt.Font.PLAIN;
 
+import com.gitsearch.controller.SearchPanelController;
 import com.gitsearch.model.SearchQuery;
 import com.gitsearch.model.SearchResponse;
-import com.gitsearch.controller.SearchPanelController;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -113,12 +113,15 @@ public class MainView extends JFrame {
     return homePanel.isVisible();
   }
 
+  /**
+   * Memindahkan SearchPanel ke penampung yang namanya ditentukan.
+   * @param container nama penampung SearchPanel.
+   */
   public void moveSearchPanel(String container) {
     if (container.equals("main")) {
       searchPanel.showLogoLabel(true);
       mainPanel.add(searchPanel, BorderLayout.NORTH);
-    }
-    else if (container.equals("home")) {
+    } else if (container.equals("home")) {
       searchPanel.resetPanel();
       homePanel.add(searchPanel);
     }
@@ -129,10 +132,10 @@ public class MainView extends JFrame {
    * @param name nama panel yang ingin ditampilkan (home atau main).
    */
   public void show(String name) {
-      layout.show(this.getContentPane(), name);
-      if (name.equals("main")) {
-        resultsPanel.show("search results");
-      }
+    layout.show(this.getContentPane(), name);
+    if (name.equals("main")) {
+      resultsPanel.show("search results");
+    }
   }
 
   /**
