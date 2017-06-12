@@ -11,7 +11,7 @@ import javax.json.JsonValue;
 /*
  * Nama File          : Repository.java
  * Tanggal dibuat     : 02/06/17
- * Tanggal perubahan  : 02/06/17
+ * Tanggal perubahan  : 12/06/17
  */
 
 /**
@@ -84,4 +84,21 @@ public class Repository {
     return parseResult;
   }
 
+  /**
+   * Menghasilkan teks HTML berdasarkan data repository.
+   * @return teks HTML yang merepresentasikan data repository.
+   */
+  public String generateHtmlText() {
+    String htmlText = "<html>";
+    htmlText += "<b>" + name + "</b><br>";
+    if (description == null) {
+      htmlText += "<i>-</i><br>";
+    }
+    else {
+      htmlText += "<i>" + description + "</i><br>";
+    }
+    htmlText += "URL: <a href=\"" + url + "\" target=\"_blank\">" + url
+        + "</a></html>";
+    return htmlText;
+  }
 }
