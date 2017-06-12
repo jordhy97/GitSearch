@@ -1,3 +1,5 @@
+package com.gitsearch;
+
 import com.gitsearch.view.MainView;
 
 /*
