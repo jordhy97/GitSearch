@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /*
  * Nama File          : SearchQuery.java
  * Tanggal dibuat     : 02/06/17
- * Tanggal perubahan  : 02/06/17
+ * Tanggal perubahan  : 12/06/17
  */
 
 /**
@@ -20,7 +20,7 @@ public class SearchQuery {
   private String type;
   private int currentPage;
   private ArrayList<Filter> filters;
-  private static final int RESULT_PER_PAGE_LIMIT = 30;
+  private static final int RESULT_PER_PAGE_LIMIT = 15;
   private static final String BASE_URL =
       "https://api.github.com/search/users?access_token=8d587e6ae4f620395cc0bf2711dc56bd433ead7b&q=";
 
@@ -28,7 +28,10 @@ public class SearchQuery {
    * Menciptakan sebuah query pencarian dengan jenis tertentu.
    * @param type jenis query pencarian.
    */
-  public SearchQuery(String type) {
+  public SearchQuery(String query, String type) {
+    //changed
+    this.query = query;
+   //changed
     this.type = type;
     currentPage = 1;
     filters = new ArrayList<>();
