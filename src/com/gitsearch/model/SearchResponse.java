@@ -9,7 +9,7 @@ import javax.json.JsonReader;
 /*
  * Nama File          : SearchResponse.java
  * Tanggal dibuat     : 02/06/17
- * Tanggal perubahan  : 02/06/17
+ * Tanggal perubahan  : 12/06/17
  */
 
 /**
@@ -64,15 +64,24 @@ public class SearchResponse {
    * @throws IOException jika terjadi kesalahan I/O ketika melakukan koneksi ke URL pencarian.
    */
   public static SearchResponse getResponse(String url) throws IOException {
-    HttpUrlConnector connector = new HttpUrlConnector(url, 5000);
-    JsonReader jsonReader = Json.createReader(new StringReader(connector.getContent()));
-    JsonObject object = jsonReader.readObject();
-    SearchResponse result = new SearchResponse();
-    result.totalCount = object.getInt("total_count");
-    result.incompleteResults = object.getBoolean("incomplete_results");
-    result.users = User.parseJson(object.getJsonArray("items").toString());
-    jsonReader.close();
-    return result;
+    try {
+      HttpUrlConnector connector = new HttpUrlConnector(url, 5000);
+      JsonReader jsonReader = Json.createReader(new StringReader(connector.getContent()));
+      JsonObject object = jsonReader.readObject();
+      SearchResponse result = new SearchResponse();
+      result.totalCount = object.getInt("total_count");
+      result.incompleteResults = object.getBoolean("incomplete_results");
+      result.users = User.parseJson(object.getJsonArray("items").toString());
+      jsonReader.close();
+      return result;
+    }
+    catch (IOException e) {
+      if (e.getMessage().equals("400")) {
+        return new SearchResponse();
+      }
+      else {
+        throw new IOException("Failed to load result, please check your internet connection");
+      }
+    }
   }
-
 }
