@@ -65,7 +65,7 @@ public class HttpUrlConnector {
       if (con != null) {
         con.disconnect();
       }
-      throw e;
+      throw new IOException(((Integer) con.getResponseCode()).toString());
     }
   }
 
