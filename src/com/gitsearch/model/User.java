@@ -12,7 +12,7 @@ import javax.json.JsonValue;
 /*
  * Nama File          : User.java
  * Tanggal dibuat     : 02/06/17
- * Tanggal perubahan  : 02/06/17
+ * Tanggal perubahan  : 12/06/17
  */
 
 /**
@@ -25,6 +25,7 @@ public class User {
   private String username;
   private String reposUrl;
   private ArrayList<Repository> repositories;
+  private boolean repositoriesLoaded;
 
   /**
    * Menciptakan pengguna Github dengan username,dan URL repository yang ditentukan.
@@ -35,6 +36,7 @@ public class User {
     this.username = username;
     this.reposUrl = reposUrl;
     repositories = new ArrayList<>();
+    repositoriesLoaded = false;
   }
 
   /**
@@ -59,14 +61,26 @@ public class User {
    * pengguna Github ini.
    */
   public void loadRepositories() throws IOException {
-    int page = 1;
-    HttpUrlConnector connector = new HttpUrlConnector(reposUrl + "?page=" + page, 5000);
-    ArrayList<Repository> results = Repository.parseJson(connector.getContent());
-    while(!results.isEmpty()) {
-      repositories.addAll(results);
-      page++;
-      connector = new HttpUrlConnector(reposUrl + "?page=" + page, 5000);
-      results = Repository.parseJson(connector.getContent());
+    if (!repositoriesLoaded) {
+      int page = 1;
+      try {
+        HttpUrlConnector connector = new HttpUrlConnector(reposUrl
+            + "?access_token=8d587e6ae4f620395cc0bf2711dc56bd433ead7b&page=" + page, 5000);
+        ArrayList<Repository> results = Repository.parseJson(connector.getContent());
+        while(!results.isEmpty()) {
+          repositories.addAll(results);
+          page++;
+          connector = new HttpUrlConnector(reposUrl
+              + "?access_token=8d587e6ae4f620395cc0bf2711dc56bd433ead7b&page=" + page, 5000);
+          results = Repository.parseJson(connector.getContent());
+        }
+        repositoriesLoaded = true;
+      }
+      catch (IOException e) {
+        repositoriesLoaded = false;
+        repositories = new ArrayList<>();
+        throw new IOException("Failed to load repositories, please check your internet connection");
+      }
     }
   }
 
