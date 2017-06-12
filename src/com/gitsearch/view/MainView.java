@@ -46,7 +46,7 @@ public class MainView extends JFrame {
     createUIComponents();
 
     setTitle("GitSearch");
-    ImageIcon icon = new ImageIcon("assets/logo.png");
+    ImageIcon icon = new ImageIcon(getClass().getResource("/images/logo.png"));
     setIconImage(icon.getImage());
     setBackground(Color.WHITE);
     setLayout(layout);
