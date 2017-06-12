@@ -16,6 +16,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /*
  * Nama File          : MainView.java
@@ -74,7 +75,7 @@ public class MainView extends JFrame {
    */
   private void createHomePanel() {
     JLabel logoLabel = new JLabel("GitSearch");
-    ImageIcon logo = new ImageIcon("assets/logo.png");
+    ImageIcon logo = new ImageIcon(getClass().getResource("/images/logo.png"));
     logoLabel.setIcon(logo);
     logoLabel.setFont(new Font("Serif", PLAIN, 34));
     homePanel = new JPanel();
@@ -83,6 +84,9 @@ public class MainView extends JFrame {
     c.insets = new Insets(3, 3, 3, 3);
     c.gridwidth = GridBagConstraints.REMAINDER;
     homePanel.add(logoLabel, c);
+    JLabel createdByLabel = new JLabel("Created by Jordhy Fernando");
+    createdByLabel.setHorizontalAlignment(SwingConstants.CENTER);
+    homePanel.add(createdByLabel, c);
     homePanel.add(searchPanel, c);
     homePanel.setBackground(Color.WHITE);
   }
@@ -95,6 +99,9 @@ public class MainView extends JFrame {
     mainPanel.setLayout(new BorderLayout());
     resultsPanel = new ResultsPanel();
     mainPanel.add(resultsPanel, BorderLayout.CENTER);
+    JLabel createdByLabel = new JLabel("GitSearch - Created by Jordhy Fernando");
+    createdByLabel.setHorizontalAlignment(SwingConstants.CENTER);
+    mainPanel.add(createdByLabel, BorderLayout.SOUTH);
     mainPanel.setBackground(Color.WHITE);
   }
 
